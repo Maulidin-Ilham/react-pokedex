@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPokemons } from "../utils/api";
+import Navbar from "../components/Navbar";
+import PokemonList from "../components/PokemonList";
 
 const Home = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -19,12 +21,10 @@ const Home = () => {
 
   return (
     <>
-      <div className="text-center font-semibold text-3xl">
-        Hello this is home page
+      <Navbar />
+      <div className="p-4">
+        <PokemonList pokemons={pokemons} />
       </div>
-      {pokemons.map((pokemon, index) => (
-        <h1 key={index}>{pokemon.name}</h1>
-      ))}
     </>
   );
 };
