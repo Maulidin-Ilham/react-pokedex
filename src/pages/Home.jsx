@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="p-4">
+      <div className="p-4 my-3 ">
         <PokemonList pokemons={pokemons} />
       </div>
     </>
