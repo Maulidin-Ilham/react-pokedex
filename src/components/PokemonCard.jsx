@@ -1,5 +1,18 @@
+import { useState } from "react";
+import Modal from "./Modal";
+
 /* eslint-disable react/prop-types */
 const PokemonCard = ({ pokemons }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
       {pokemons.map((pokemon, index) => (
@@ -14,12 +27,17 @@ const PokemonCard = ({ pokemons }) => {
             className="object-cover"
           />
           <div className="mt-3">
-            <button className="px-4 py-2 bg-black text-white rounded hover:opacity-80 transition duration-150 ease-in-out font-semibold text-base">
+            <button
+              className="px-4 py-2 bg-black text-white rounded hover:opacity-80 transition duration-150 ease-in-out font-semibold text-base"
+              onClick={openModal}
+            >
               Detail
             </button>
           </div>
         </div>
       ))}
+
+      {isOpen && <Modal isOpen={isOpen} onClose={closeModal} />}
     </>
   );
 };
