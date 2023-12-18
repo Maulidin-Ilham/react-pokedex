@@ -9,3 +9,15 @@ export const getPokemons = async () => {
     console.error("Error fetching data:", error.message);
   }
 };
+
+export const getPokemonDetails = async (name) => {
+  try {
+    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+    if (!res.ok) {
+      throw new Error("failed to fetch data");
+    }
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
+};
