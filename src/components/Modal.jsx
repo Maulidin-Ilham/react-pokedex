@@ -20,6 +20,8 @@ const Modal = ({ isOpen, onClose, selectedPokemon }) => {
     fetchData();
   }, []);
 
+  const stats = pokemonDetail.stats;
+
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -71,7 +73,35 @@ const Modal = ({ isOpen, onClose, selectedPokemon }) => {
                             alt={pokemonDetail.name}
                           />
                         )}
-                      {/* <h1>{pokemonDetail.sprites}</h1> */}
+                    </div>
+                    <div className="mt-2">
+                      <div>
+                        <h1 className="font-semibold">Abilities</h1>
+                      </div>
+                      <div className="mt-1">
+                        {pokemonDetail.abilities &&
+                          pokemonDetail.abilities.map((ability, index) => (
+                            <h1 key={index} className="capitalize">
+                              {ability.ability.name}
+                            </h1>
+                          ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-4">
+                      <div>
+                        <h1 className="font-semibold">Stats</h1>
+                      </div>
+                      <div className="mt-1">
+                        {stats &&
+                          stats.map((stat, index) => (
+                            <div key={index}>
+                              <h1>
+                                {stat.stat.name} : {stat.base_stat}
+                              </h1>
+                            </div>
+                          ))}
+                      </div>
                     </div>
                   </div>
 
