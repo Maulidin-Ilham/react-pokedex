@@ -11,14 +11,16 @@ const Modal = ({ isOpen, onClose, selectedPokemon }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getPokemonDetails(selectedPokemon);
-        setPokemonDetail(data);
+        if (isOpen) {
+          const data = await getPokemonDetails(selectedPokemon);
+          setPokemonDetail(data);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, []);
+  }, [isOpen, selectedPokemon]);
 
   const stats = pokemonDetail.stats;
 
@@ -108,7 +110,7 @@ const Modal = ({ isOpen, onClose, selectedPokemon }) => {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded border border-transparent bg-black text-white p-2 hover:opacity-80 transiton duration-150 ease-in-out font-semibold"
                       onClick={onClose}
                     >
                       Got it, thanks!
