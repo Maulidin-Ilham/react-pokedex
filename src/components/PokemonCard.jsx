@@ -21,7 +21,7 @@ const PokemonCard = ({ pokemons }) => {
       {pokemons.map((pokemon, index) => (
         <div
           key={index}
-          className="border rounded h-[200px] shadow p-2 flex flex-col justify-center items-center md:w-[220px] lg:w-[250px] lg:h-[220px]"
+          className="border rounded  h-[200px] shadow p-2 flex flex-col justify-center items-center md:w-[220px] lg:w-[250px] lg:h-[220px]"
         >
           <h1 className="font-semibold text-lg">{pokemon.name}</h1>
 
